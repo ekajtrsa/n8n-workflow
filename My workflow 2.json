@@ -1,0 +1,107 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "283d1148-3ee5-461c-b1cd-225165ef566b",
+      "name": "Telegram Trigger",
+      "webhookId": "3ed27663-14a9-465d-a40c-3c63a763ae94",
+      "credentials": {
+        "telegramApi": {
+          "id": "qhRXhQIkLveV90xK",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "={{ $json.message.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        48
+      ],
+      "id": "0df95354-17dd-44c9-b33b-78267e42f93e",
+      "name": "Send a text message",
+      "webhookId": "0acb5255-fe5c-4747-9f42-2342aa7ecaa7",
+      "credentials": {
+        "telegramApi": {
+          "id": "qhRXhQIkLveV90xK",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "ekajtrs@gmail.com",
+        "subject": "Hello",
+        "message": "Hello",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        608,
+        0
+      ],
+      "id": "3cfdc929-ec5d-430f-9432-42a9952072fc",
+      "name": "Send a message",
+      "webhookId": "fa82f9f7-c85a-4d35-822f-e35a2447f420",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aWUA50xCcxskGE73",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "94cf3c03-78d1-4e90-a2cb-06facd1a5841",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5e933b6dd101d9a3fad2c21a6d8c56fae07c7b47fb9283abc3184ffc2a57172f"
+  },
+  "id": "oOsdbNEXSsREGWvU",
+  "tags": []
+}
